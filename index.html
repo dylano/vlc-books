@@ -358,18 +358,17 @@ function buildSummary(){
   return out;
 }
 
+function whatsappSummary(){
+  const text = encodeURIComponent(buildSummary());
+  window.open(`https://wa.me/34676247723?text=${text}`, '_blank');
+}
+
 function copySummary(){
   const text = buildSummary();
   navigator.clipboard.writeText(text).then(() => {
     const msg = document.getElementById('copiedMsg');
     if (msg){ msg.classList.add('show'); setTimeout(() => msg.classList.remove('show'), 2200); }
   });
-}
-
-function emailSummary(){
-  const subject = encodeURIComponent("Valencia Reading Room — New Member Card");
-  const body = encodeURIComponent(buildSummary());
-  window.location.href = `mailto:brenda@doliver.net?subject=${subject}&body=${body}`;
 }
 
 function goNext(){ if (current < sections.length - 1) { current++; renderCard(); renderRibbon(); window.scrollTo({top:0, behavior:'smooth'}); } }
@@ -382,7 +381,6 @@ function renderCard(){
   if (s.key === 'intro'){
     card.innerHTML = `
       <div class="stamp"><span class="num">Welcome</span></div>
-      <h2 class="section-title">Welcome to the club! 📚</h2>
       <p class="intro-text">Welcome to the Valencia Reading Room! Before we pick our first read, we want to get a feel for what everyone's into. This quick card covers what we read, how often we meet, and how things run <strong>(spoiler: it's low-pressure — using AI or Reddit for discussion questions is totally fair game)</strong>. Takes about 2 minutes. Answer honestly — there are no wrong answers, just preferences we build the club around.</p>
       <div class="nav-row">
         <span></span>
@@ -393,11 +391,11 @@ function renderCard(){
     card.innerHTML = `
       <div class="stamp"><span class="num">Filed</span></div>
       <h2 class="section-title">Ready to check out</h2>
-      <p class="section-sub">Here's your card. Copy it into a message, or open it in your email app to send straight to Brenda (brenda@doliver.net).</p>
+      <p class="section-sub">Here's your card. Copy it and paste it into an email to Brenda (brenda@doliver.net), or send it straight over on WhatsApp.</p>
       <div class="review"><pre>${buildSummary()}</pre></div>
       <div class="action-row">
         <button class="btn primary" onclick="copySummary()">Copy answers</button>
-        <button class="btn" onclick="emailSummary()">Email answers</button>
+        <button class="btn" onclick="whatsappSummary()">WhatsApp answers</button>
         <span class="copied-msg" id="copiedMsg">Copied ✓</span>
       </div>
       <div class="nav-row">

@@ -338,10 +338,10 @@ function questionHTML(q){
 }
 
 function buildSummary(){
-  let out = "VALENCIA READING ROOM — NEW MEMBER CARD\\n" + "=".repeat(30) + "\\n\\n";
+  let out = "VALENCIA READING ROOM — NEW MEMBER CARD\n" + "=".repeat(30) + "\n\n";
   sections.forEach(s => {
     if (!s.questions) return;
-    out += s.label.toUpperCase() + "\\n";
+    out += s.label.toUpperCase() + "\n";
     s.questions.forEach(q => {
       let val = answers[q.id];
       if (Array.isArray(val)) val = val.join(', ');
@@ -349,11 +349,11 @@ function buildSummary(){
         val = (val && val.length ? val : '') + ` (Other: ${answers[q.id + '_other']})`;
       }
       if (q.allowLink && answers[q.id + '_link']){
-        val = (val && val.length ? val : '') + `\\n  Link: ${answers[q.id + '_link']}`;
+        val = (val && val.length ? val : '') + `\n  Link: ${answers[q.id + '_link']}`;
       }
-      out += "- " + q.label + "\\n  " + (val && val.length ? val : '(no answer)') + "\\n";
+      out += "- " + q.label + "\n  " + (val && val.length ? val : '(no answer)') + "\n";
     });
-    out += "\\n";
+    out += "\n";
   });
   return out;
 }

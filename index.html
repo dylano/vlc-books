@@ -266,21 +266,18 @@
 <script>
 const sections = [
   { key: 'intro', title: null },
-  { key: 'focus', label: 'Focus', questions: [
-      { id:'genres', label:"I'm most drawn to reading…", hint:"pick your top 2–3", type:'chips', options:['Literary fiction','Memoir / biography','History','Sci-fi / fantasy','Mystery / thriller','Essays','Classics','Other'], allowOther:true },
+  { key:'how', label:"Let's Get Started", questions: [
+      { id:'lead_commit', label:"In our first meeting we'll nominate and vote on our first book — I get that if my pick is chosen, I'll lead the next discussion.", type:'chips', single:true, options:['Yes, obviously','Let’s talk about it','Nervous but willing'] },
+      { id:'questions_prep', label:"When it's my turn to lead, I'll come with 5 discussion questions — pulled together myself, from Reddit, AI, wherever works.", type:'chips', single:true, options:['Sounds good','Could use a template to start from'] },
       { id:'discussion_style', label:"The kind of book that makes for the best discussion, to me, is one that…", hint:"choose as many as apply", type:'chips', options:['Has a twist to unpack','Tackles a big moral question','Teaches me something new','Makes me feel something','All of the above','Other'], allowOther:true },
-      { id:'theme', label:"I'd love this club to have a loose theme or focus around…", type:'text' },
   ]},
   { key:'schedule', label:'Schedule & Location', questions: [
       { id:'frequency', label:"I can realistically commit to meeting…", type:'chips', single:true, options:['Once a month','Every 6 weeks','Every two months'] },
       { id:'time', label:"My preferred day/time is usually…", hint:"choose as many as apply", type:'chips', options:['Weekday evenings','Weekend afternoons','Weekend evenings'] },
+      { id:'top_days', label:"The top three days of the week for me to meet are…", hint:"choose up to 3", type:'chips', options:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'] },
+      { id:'neighborhoods_easy', label:"What neighborhoods are easiest for you?", hint:"choose as many as apply", type:'chips', options:['Ciutat Vella (Old Town)','L\'Eixample (Ensanche)','El Cabanyal/La Malvarrosa','Quatre Carreres','All those work for me','Other'], allowOther:true },
       { id:'venue', label:"When it comes to location, I'm picturing us at…", type:'chips', single:true, options:['A cozy cafe','A restaurant we can hang at','Rotating between a few spots','Open to whatever'] },
-      { id:'neighborhood', label:"If you know Valencia well: a neighborhood or spot I'd love to try is…", type:'text' },
-  ]},
-  { key:'how', label:'How We Roll', questions: [
-      { id:'lead_commit', label:"I'm in for nominating books — and I get that if my pick is chosen, I'll lead the next discussion.", type:'chips', single:true, options:['Yes, obviously','Let’s talk about it','Nervous but willing'] },
-      { id:'questions_prep', label:"When it's my turn to lead, I'll come with 5 discussion questions — pulled together myself, from Reddit, AI, wherever works.", type:'chips', single:true, options:['Sounds good','Could use a template to start from'] },
-      { id:'first_pick', label:"One book I'd nominate right off the bat, if given the chance, is…", type:'text', allowLink:true, linkLabel:'Goodreads link (optional)' },
+      { id:'neighborhood', label:"I think this would be a great place for us to try meeting (cafe, restaurant, etc)…", type:'text' },
   ]},
   { key:'review', label:'Review' }
 ];
@@ -381,7 +378,7 @@ function renderCard(){
   if (s.key === 'intro'){
     card.innerHTML = `
       <div class="stamp"><span class="num">Welcome</span></div>
-      <p class="intro-text">Welcome to the Valencia Reading Room! Before we pick our first read, we want to get a feel for what everyone's into. This quick card covers what we read, how often we meet, and how things run <strong>(spoiler: it's low-pressure — using AI or Reddit for discussion questions is totally fair game)</strong>. Takes about 2 minutes. Answer honestly — there are no wrong answers, just preferences we build the club around.</p>
+      <p class="intro-text">Welcome to the Valencia Reading Room! This is a quick survey to cover general preferences we can build the club around. Takes about 2 minutes. No pressure, there are no wrong answers.</p>
       <div class="nav-row">
         <span></span>
         <button class="btn primary" onclick="goNext()">Let's go →</button>
